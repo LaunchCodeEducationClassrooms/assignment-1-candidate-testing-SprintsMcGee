@@ -24,20 +24,15 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   
   for (i = 0; i < questions.length; i++) {
-    candidateAnswers[i] = input.question(questions[i]);        
-  }
+    candidateAnswers[i] = input.question(questions[i]);
+    console.log(`Canidate Answer: ${candidateAnswers[i]}`);
+    console.log(`Correct Answer: ${correctAnswers[i]}\n`); 
+    }
   }
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //  
-  for (j = 0; j < candidateAnswers.length; j++) {
-      console.log(`\n${questions[j]}`);
-      console.log(`Canidate Answer: ${candidateAnswers[j]}`);
-      console.log(`Correct Answer: ${correctAnswers[j]}\n`); 
-  }
-
   let grade = 0;
-
   for (k = 0; k < candidateAnswers.length; k++) {
     if (candidateAnswers[k].toLowerCase() === correctAnswers[k].toLowerCase()) {
       grade = grade + 1;
