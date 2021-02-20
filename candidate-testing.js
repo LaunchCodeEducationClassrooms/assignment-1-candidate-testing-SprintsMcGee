@@ -3,11 +3,11 @@ const input = require('readline-sync');
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
-let candidateName = " ";
+let candidateName = "";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
-let candidateAnswer = " ";
+let candidateAnswer = "";
 let questions = ["Who was the first American woman in space? ", 
                 "True or false: 5000 meters == 5 kilometers? ", 
                 "(5 + 3)/2 * 10 = ? ", 
@@ -19,9 +19,7 @@ let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  let candidateName = input.question("Name: ")
-  console.log(`Candidate Name: ${candidateName}`);
-  return candidateName;
+  candidateName = input.question("Name: ")
 }
 
 function askQuestion() {
@@ -39,15 +37,15 @@ function gradeQuiz(candidateAnswers) {
   let grade = 0;
   let totalGrade = 0;
   for (k = 0; k < candidateAnswers.length; k++) {
-    if (candidateAnswers[k].toLowerCase() === correctAnswers[k].toLowerCase()) {
-      grade = grade + 1;
+    if (candidateAnswers[k].toLowerCase() == correctAnswers[k].toLowerCase()) {
+      totalGrade++;
     } else {
-      grade = grade;
+      totalGrade = totalGrade;
     }
   }
 
-  totalGrade = (grade / questions.length) * 100; 
-  console.log(`\nOverall Grade: ${totalGrade}% (${grade} out of ${questions.length} correct)`);
+  grade = (totalGrade / questions.length) * 100; 
+  console.log(`\nOverall Grade: ${grade}% (${totalGrade} out of ${questions.length} correct)`);
   
   if (grade <  80) {
     console.log("STATUS: Failed")
@@ -60,6 +58,7 @@ function gradeQuiz(candidateAnswers) {
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
+  console.log(`Candidate Name: ${candidateName}`);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
